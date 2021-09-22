@@ -21,6 +21,7 @@ var Player = function(name, color, position, direction) {
 };
 
 Player.prototype.dead = function () {
+    this.life-=1
     this.graphic.position.z = this.graphic.position.z-0.1;
         //Nettoyage de la div container
         $("#container").html("");
@@ -51,13 +52,13 @@ Player.prototype.displayInfo = function () {
 }
 
 Player.prototype.turnRight = function (angle) {
-    this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), +angle);
+    this.direction -= angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), -angle);
 };
 
 Player.prototype.turnLeft = function (angle) {
     this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), +angle);
 };
 
 Player.prototype.move = function () {
